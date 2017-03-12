@@ -45,18 +45,13 @@ describe('Users', () => {
     expect(userList).toEqual(['Jen']);
   });
 
-  if('should remove a user', () => {
-    users.removeUser('1');
-    expect(users.users).toEqual([{
-      id: '2',
-      name: 'Jen',
-      room: 'React Course'
-    },{
-      id: '3',
-      name: 'Julie',
-      room: 'Node Course'
-    }]);
-  });
+  it('should remove a user', () => {
+      var userId = '1';
+      var user = users.removeUser(userId);
+
+      expect(user.id).toBe(userId);
+      expect(users.users.length).toBe(2);
+    });
 
   it('should not remove user', () => {
     users.removeUser('1000');
